@@ -13,6 +13,7 @@ class Hero(db.Model):
 
     hero_powers = db.relationship('HeroPower', backref='hero')
     
+
 # add any models you may need. 
 class HeroPower(db.Model):
 
@@ -23,7 +24,7 @@ class HeroPower(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-    hero_id = db.Column(db.Integer, db.ForeignKey('heroes.id'))
+    hero_id = db.Column(db.Integer, db.ForeignKey('hero.id'))
     power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
     def validate_strength(strength):
@@ -31,7 +32,7 @@ class HeroPower(db.Model):
         if strength not in allowed_strengths:
             return False
         return True
-
+    
 class Power(db.Model):
 
     __tablename__ = 'powers'
