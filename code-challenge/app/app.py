@@ -118,7 +118,6 @@ def power_by_id(id):
                 setattr(power, attr, value)
 
         db.session.commit()
-
         power_dict = {
             'id': power.id,
             'name': power.name,
