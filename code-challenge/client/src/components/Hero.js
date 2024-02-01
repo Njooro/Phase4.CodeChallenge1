@@ -10,7 +10,7 @@ function Hero() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/heroes/${id}`).then((r) => {
+    fetch(`http://localhost:5555/heroes/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((hero) =>
           setHero({ data: hero, error: null, status: "resolved" })
@@ -34,7 +34,7 @@ function Hero() {
       <h3>Powers:</h3>
       <ul>
         {hero.powers.map((power) => (
-          <li key={hero.id}>
+          <li key={power.id}>
             <Link to={`/powers/${power.id}`}>{power.name}</Link>
           </li>
         ))}

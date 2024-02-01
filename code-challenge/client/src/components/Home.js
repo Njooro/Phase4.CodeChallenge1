@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const [heros, setHeros] = useState([]);
+  const [heroes, setHeroes] = useState([]);
 
   useEffect(() => {
-    fetch("/heroes")
+    fetch("http://localhost:5555/heroes")
       .then((r) => r.json())
-      .then(setHeros);
+      .then(setHeroes);
   }, []);
 
   return (
     <section>
       <h2>All Heroes</h2>
       <ul>
-        {heros.map((hero) => (
+        {heroes.map((hero) => (
           <li key={hero.id}>
             <Link to={`/heroes/${hero.id}`}>{hero.super_name}</Link>
           </li>
